@@ -1,17 +1,19 @@
-"use client";
-import avatar1 from "@/assets/avatar-1.png";
-import avatar2 from "@/assets/avatar-2.png";
-import avatar3 from "@/assets/avatar-3.png";
-import avatar4 from "@/assets/avatar-4.png";
-import avatar5 from "@/assets/avatar-5.png";
-import avatar6 from "@/assets/avatar-6.png";
-import avatar7 from "@/assets/avatar-7.png";
-import avatar8 from "@/assets/avatar-8.png";
-import avatar9 from "@/assets/avatar-9.png";
-import Image from "next/image";
-import { twMerge } from "tailwind-merge";
-import { motion } from "framer-motion";
-import React from "react";
+"use client"
+
+import avatar1 from "@/assets/avatar-1.png"
+import avatar2 from "@/assets/avatar-2.png"
+import avatar3 from "@/assets/avatar-3.png"
+import avatar4 from "@/assets/avatar-4.png"
+import avatar5 from "@/assets/avatar-5.png"
+import avatar6 from "@/assets/avatar-6.png"
+import avatar7 from "@/assets/avatar-7.png"
+import avatar8 from "@/assets/avatar-8.png"
+import avatar9 from "@/assets/avatar-9.png"
+import clsx from "clsx"
+import Image from "next/image"
+
+import { motion } from "framer-motion"
+import React from "react"
 
 const testimonials = [
   {
@@ -68,16 +70,16 @@ const testimonials = [
     name: "Casey Harper",
     username: "@casey09",
   },
-];
+]
 
-const firstColumn = testimonials.slice(0, 3);
-const secondColumn = testimonials.slice(3, 6);
-const thirdColumn = testimonials.slice(6, 9);
+const firstColumn = testimonials.slice(0, 3)
+const secondColumn = testimonials.slice(3, 6)
+const thirdColumn = testimonials.slice(6, 9)
 
 const TestimonialsColumn = (props: {
-  className?: string;
-  testimonials: typeof testimonials;
-  duration?: number;
+  className?: string
+  testinomials: typeof testimonials
+  duration?: number
 }) => (
   <div className={props.className}>
     <motion.div
@@ -94,8 +96,8 @@ const TestimonialsColumn = (props: {
     >
       {[...new Array(2)].fill(0).map((_, index) => (
         <React.Fragment key={index}>
-          {props.testimonials.map(({ text, imageSrc, name, username }) => (
-            <div className="card">
+          {props.testinomials.map(({ text, imageSrc, name, username }) => (
+            <div className="card" key={name}>
               <div>{text}</div>
               <div className="flex items-center gap-2 mt-5">
                 <Image
@@ -118,11 +120,11 @@ const TestimonialsColumn = (props: {
       ))}
     </motion.div>
   </div>
-);
+)
 
 export const Testimonials = () => {
   return (
-    <section className="bg-white">
+    <section className="bg-white py-10">
       <div className="container">
         <div className="section-heading">
           <div className="flex justify-center">
@@ -130,24 +132,24 @@ export const Testimonials = () => {
           </div>
           <h2 className="section-title mt-5">What our users say</h2>
           <p className="section-description mt-5">
-            From intuitive design to powerful features, our app has become an
+            From inuitive design to powerful features, out app has become an
             essential tool for users around the world.
           </p>
         </div>
         <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[738px] overflow-hidden">
-          <TestimonialsColumn testimonials={firstColumn} duration={15} />
+          <TestimonialsColumn testinomials={firstColumn} duration={15} />
           <TestimonialsColumn
-            testimonials={secondColumn}
+            testinomials={secondColumn}
             className="hidden md:block"
             duration={19}
           />
           <TestimonialsColumn
-            testimonials={thirdColumn}
+            testinomials={thirdColumn}
             className="hidden lg:block"
             duration={17}
           />
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
